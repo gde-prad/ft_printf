@@ -6,20 +6,21 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/02 14:07:21 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:35:58 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ftprintf.h"
 
-char	*malloc(int nbr, char *base, int radix)
+char	*maalloc(int nbu, int radix)
 {
 	int		i;
 	char	*a;
+
 	i = 0;
-	while
+	while (nbu != 0)
 	{
-		nbu /= radix
+		nbu /= radix;
 		i++;
 	}
 	a = malloc(i);
@@ -31,7 +32,7 @@ void	ft_putnbr_base(int nbr, char *base)
 	int				radix;
 	int				i;
 	unsigned int	nbu;
-	char			*rev_digits
+	char			*rev_digits;
 
 	radix = ft_strlen(base);
 	nbu = nbr;
@@ -41,7 +42,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		nbu = -nbr;
 	}
 	i = 0;
-	rev_digits = malloc(nbr, base, radix);
+	rev_digits = maalloc(nbr, radix);
 	while (nbu > 0)
 	{
 		rev_digits[i] = base[nbu % radix];
