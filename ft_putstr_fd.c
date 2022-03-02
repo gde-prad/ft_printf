@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 15:05:37 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/02 12:50:22 by gde-prad         ###   ########.fr       */
+/*   Created: 2022/02/01 18:40:59 by gde-prad          #+#    #+#             */
+/*   Updated: 2022/03/02 13:21:22 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <printf.h>
+#include "ftprintf.h"
 
-int	main()
+int	ft_putstr_fd(char *s, int fd)
 {
-	ft_printf("Hola, me llamo %s ", 'Gonzalo',);
-	return (0);
-}
+	int	cont;
 
+	cont = 0;
+	if (!s)
+	{
+		write(fd, "", 1);
+		return (cont);
+	}
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+		cont++;
+	}
+	return (cont);
+}

@@ -6,36 +6,47 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:04:10 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/02/23 16:39:54 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/02 13:30:05 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-size_t	ft_strlen(const char *s);
+#include "ftprintf.h"
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int i;
-	int len;
-	unsigned char letra;
+	va_list	lista;
+	int		i;
+	int		cont;
+	char	*a;
 	
-	
-	va_start(args, format);
+	va_start(lista, format);
+	cont = 0;
 	i = 0;
-	len = ft_strlen(format);
-	while (format)
+	while(format[i])
 	{
-		write(1, format, 1);
-		format = va_arg(args, const char *);
+		if (format[i] != '%')
+			cont += ft_putchar_fd(format[i], 1);
+		else if (format[i++] == '%')
+		{
+			if (format[i] == '%')
+				cont += ft_putchar_fd(format[i], 1);
+			else if (format[i] == 's' || format[i] == 'c')
+			{
+				a = va_arg(lista, char *);
+				cont += ft_putstr_fd(a, 1);
+			}
+			else if (format[i] == 'p')
+			{
+				a = va_arg(lista, void *);
+
+				cont += ft_putstr_fd(a, 1);
+			}
+		}
 		i++;
 	}
+	
+	va_end(lista);
 
-	va_end(args);
-	return (i);
+	return (cont);
 }
 
-//Recibe varios argumentos
-//
