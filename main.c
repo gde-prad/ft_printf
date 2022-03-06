@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:05:37 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/06 20:17:13 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/06 20:37:45 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main()
 	write(1,"\n", 1);
 
 	printf("PRINTF: El puntero tiene esta dirección: %p",(void *) &a);
-	write(1,"\n", 1);
+	printf("\n");
 
 	printf("PRINTF: mis numeros favoritos son el %d, %d y el %d", 5, -54, 0);
 	printf("\n");
