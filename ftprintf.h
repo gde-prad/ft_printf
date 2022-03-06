@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 17:44:14 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/06 14:05:33 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/06 19:45:06 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int		ft_printf(const char *format, ...);
-int		ft_putchar_fd(char c, int fd);
-int		ft_putnbr_base(int nbr, char *base);
-int		ft_putstr_fd(char *s, int fd);
-size_t	ft_strlen(const char *s);
+int			ft_printf(const char *format, ...);
+int			ft_putchar_fd(char c, int fd);
+size_t		ft_putnbr_base(size_t nbr, char *base);
+int			ft_putstr_fd(char *s, int fd);
+size_t		ft_strlen(const char *s);
+uintptr_t	ft_putnbr_base_ptr(uintptr_t nbr, char *base);
 
 #endif

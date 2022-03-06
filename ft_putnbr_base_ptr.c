@@ -6,7 +6,7 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/06 20:15:35 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/06 20:11:17 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	exception()
 	write(1, "0", 1);
 	return (1);
 }
-size_t	ft_putnbr_base(size_t  nbr, char *base)
+uintptr_t	ft_putnbr_base_ptr(uintptr_t  nbr, char *base)
 {
-	int			r;
-	int			i;
-	int			ret;
-	int			aux;
+	uintptr_t		r;
+	uintptr_t		i;
+	uintptr_t		ret;
+	unsigned int	aux;
 	unsigned char	*digitos;
 
 	r = ft_strlen(base);
@@ -51,14 +51,22 @@ size_t	ft_putnbr_base(size_t  nbr, char *base)
 	}
 	i = 0;
 	digitos = maalloc(nbr, r);
-	while (aux > 0)
+	while (aux > 16)
 	{
 		digitos[i] = base[aux % r];
 		aux /= r;
 		i++;
 	}
+	if (aux > 0 && aux <= 16)
+	{
+		digitos[i] = base[aux];
+		i++;
+	}
 	ret = i;
-	while (i-- > 0)
+	i--;
+	write(1, "0x7", 3);
+	ret = ret + 3;
+	while (digitos[i])
 	{
 		write(1, &digitos[i], 1);
 		i--;
