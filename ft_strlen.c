@@ -6,11 +6,11 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:14:45 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/02 13:21:56 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:28:03 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {

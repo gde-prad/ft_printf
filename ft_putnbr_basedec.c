@@ -6,12 +6,13 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/08 12:38:20 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:37:44 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
 unsigned char	*maalloc(int nbr, int r)
 {
 	int				i;
@@ -26,36 +27,36 @@ unsigned char	*maalloc(int nbr, int r)
 	a = malloc(i);
 	return (a);
 }
+*/
 
-int	exception()
-{
-	write(1, "0", 1);
-	return (1);
-}
-
-int	ft_putnbr_base(int  nbr, char *base)
+int	ft_putnbr_basedec(int  nbr, char *base)
 {
 	int				i;
 	int				ret;
 	int				d;
-	unsigned int	rbn;
+//	unsigned int	rbn;
 	unsigned char	*digitos;
 
-	rbn = (unsigned int) nbr;
+	//rbn = (unsigned int) nbr;
 	ret = 0;
 	d = 0;
-	digitos = maalloc(nbr, 16);
-	while (rbn >= 16)
+	if (nbr < 0)
 	{
-		i = rbn % 16;
-		rbn = rbn / 16;
+		ret = ft_putchar_fd('-', 1);
+		nbr = nbr * -1;
+	}
+	digitos = maalloc(nbr, 10);
+	while (nbr >= 10)
+	{
+		i = nbr % 10;
+		nbr = nbr / 10;
 		ret++;
 		digitos[d++] = base[i]; 
 	//	write(1, base + i, 1);
 	}
-	if (rbn < 16)
+	if (nbr < 10)
 	{
-		i = rbn % 16;
+		i = nbr % 10;
 		digitos[d] = base[i];
 		//	write (1, base + i, 1);
 		ret++;
@@ -90,7 +91,7 @@ int	ft_putnbr_base(int  nbr, char *base)
 	write(1, &digitos[i], 1);
 	*/
 	free(digitos);
-	
+
 	return (ret);
 }
 

@@ -6,13 +6,13 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/06 20:48:35 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:06:28 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
-unsigned char	*maalloc(uintptr_t nbu, int r)
+unsigned char	*mallocptr(uintptr_t nbu, int r)
 {
 	int				i;
 	unsigned char	*a;
@@ -27,50 +27,41 @@ unsigned char	*maalloc(uintptr_t nbu, int r)
 	return (a);
 }
 
-int	exception()
-{
-	write(1, "0", 1);
-	return (1);
-}
+//int	exception()
+//{
+//	write(1, "0", 1);
+//	return (1);
+//}
+
 uintptr_t	ft_putnbr_base_ptr(uintptr_t  nbr, char *base)
 {
-	uintptr_t		r;
 	uintptr_t		i;
 	uintptr_t		ret;
-	unsigned int	aux;
 	unsigned char	*digitos;
 
-	r = ft_strlen(base);
-	aux = nbr;
-	if (aux == 0)
-		return (exception());
-	if (nbr < 0)
+	if (nbr == 0)
 	{
-		ft_putchar_fd('-', 1);
-		aux = -nbr;
+		write(1, "0x0", 3);
+		return (3);
 	}
 	i = 0;
-	digitos = maalloc(nbr, r);
-	while (aux > 16)
+	digitos = mallocptr(nbr, 16);
+	while (nbr >= 16)
 	{
-		digitos[i] = base[aux % r];
-		aux /= r;
+		digitos[i] = base[nbr % 16];
+		nbr /= 16;
 		i++;
 	}
-	if (aux > 0 && aux <= 16)
-	{
-		digitos[i] = base[aux];
-		i++;
-	}
-	ret = i;
-	i--;
-	write(1, "0x7", 3);
-	ret = ret + 3;
-	while (digitos[i])
+	if (nbr > 0 && nbr <= 16)
+		digitos[i] = base[nbr];
+	write(1, "0x", 2);
+	ret = i + 3;
+	while (i != 0)
 	{
 		write(1, &digitos[i], 1);
 		i--;
 	}
+	write(1, &digitos[i], 1);
 	free(digitos);
 	return (ret);
 }
