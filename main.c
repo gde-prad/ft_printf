@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:05:37 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/08 14:05:59 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:30:37 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,22 @@ int	main()
 
 	printf("PRINTF: El puntero: %p",(void *) &a);
 	printf("\n");
-*/
+
 	
 	ft_printf("Vienen curvas   ");
 	ft_printf(" %p ", 15);
 	write(1, "\n", 1);
 	ft_printf(" %p ", 18);
 	write(1, "\n", 1);
+	 */
+	
 
+	printf("holla que tal %u , %u, %u", -65, -100, 0);
+	write(1, "\n", 1);
+	
+	ft_printf("holla que tal %u , %u, %u", -65, -100, 0);
+	write(1, "\n", 1);
+	
 	/*
 	printf("PRINTF: mis numeros favoritos son el %d, %d y el %d", 50, -54, 8724872);
 	printf("\n");

@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:04:10 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/08 13:38:28 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:37:58 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_printf(const char *format, ...)
 			else if (format[i] == 'd' || format[i] == 'i')
 				cont += ft_putnbr_basedec(va_arg(lista, int), "0123456789");
 			else if (format[i] == 'u')
-				cont += ft_putnbr_base_signo(va_arg(lista, unsigned int), "0123456789");
+				cont += ft_putnbr_inicial(va_arg(lista, unsigned int));
 			else if (format[i] == 'x')
 				cont += ft_putnbr_base(va_arg(lista, int), "0123456789abcdef");
 			else if (format[i] == 'X')

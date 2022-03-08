@@ -6,7 +6,7 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/08 12:27:23 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:50:43 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,8 @@ int	ft_putnbr_base_signo(unsigned int  nbr, char *base)
 	ret = 0;
 	if (nbr == 0)
 		return (exception());
-	if (nbr < 0)
-	{
-		ret = ft_putchar_fd('-', 1);
-		nbr = nbr * -1;
-	}
 	i = 0;
-	digitos = maalloc(nbr, r);
+	digitos = maalloc(nbr, 10);
 	while (nbr > 0)
 	{
 		digitos[i] = base[nbr % r];
