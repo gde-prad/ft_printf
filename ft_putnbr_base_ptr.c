@@ -6,7 +6,7 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/09 11:01:14 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/09 11:22:56 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ unsigned char	*mallocptr(uintptr_t nbu, int r)
 	return (a);
 }
 
+uintptr_t	zero(void)
+{
+	write(1, "0x0", 3);
+	return (3);
+}
+
 uintptr_t	ft_putnbr_base_ptr(uintptr_t nbr, char *base)
 {
 	uintptr_t		i;
@@ -34,10 +40,7 @@ uintptr_t	ft_putnbr_base_ptr(uintptr_t nbr, char *base)
 	unsigned char	*digitos;
 
 	if (nbr == 0)
-	{
-		write(1, "0x0", 3);
-		return (3);
-	}
+		return (zero());
 	i = 0;
 	digitos = mallocptr(nbr, 16);
 	while (nbr >= 16)
@@ -51,10 +54,7 @@ uintptr_t	ft_putnbr_base_ptr(uintptr_t nbr, char *base)
 	write(1, "0x", 2);
 	ret = i + 3;
 	while (i != 0)
-	{
-		write(1, &digitos[i], 1);
-		i--;
-	}
+		write(1, &digitos[i--], 1);
 	write(1, &digitos[i], 1);
 	free(digitos);
 	return (ret);

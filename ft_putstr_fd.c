@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 18:40:59 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/08 13:02:44 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/03/09 12:36:34 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putstr_fd(char *s, int fd)
 	}
 	while (*s)
 	{
-		write(fd,s, 1);
+		write(fd, s, 1);
 		s++;
 		cont++;
 	}
