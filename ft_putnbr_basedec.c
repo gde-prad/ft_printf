@@ -6,7 +6,7 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/09 12:33:28 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:53:34 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_putnbr_basedec(long int nbr)
 		i[2] = ft_putchar_fd('-', 1);
 		nbr = nbr * -1;
 	}
-	digitos = maalloc(nbr, 10);
+	digitos = ft_malloc(nbr, 10);
 	i[2] += ft_filldigitos(digitos, nbr, &i[0], &i[1]);
 	while (i[1] != -1)
 		write(1, &digitos[i[1]--], 1);

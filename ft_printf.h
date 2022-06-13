@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 17:44:14 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/09 11:53:32 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:03:46 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t			ft_strlen(const char *s);
 int				ft_putnbr_base_signo(unsigned int nbr, char *base);
 int				ft_putnbr_basedec(long int nbr);
 uintptr_t		ft_putnbr_base_ptr(uintptr_t nbr, char *base);
-unsigned char	*maalloc(int nbu, int r);
+unsigned char	*ft_malloc(int nbu, int r);
 int				exception(void);
 int				ft_putnbr_inicial(unsigned int n);
 

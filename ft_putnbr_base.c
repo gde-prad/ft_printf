@@ -6,13 +6,21 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/09 11:12:24 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/13 19:03:39 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned char	*maalloc(int nbr, int r)
+struct punteros {
+//Dar nombres descriptivos
+//
+	int	punt0;
+	int	punt1;
+	int	punt2;
+};
+
+unsigned char	*ft_malloc(int nbr, int r)
 {
 	int				i;
 	unsigned char	*a;
@@ -35,29 +43,29 @@ int	exception(void)
 
 int	ft_putnbr_base(int nbr, char *base)
 {
-	int				i[4];
+	struct punteros punts;
 	unsigned int	nbru;
 	unsigned char	*digitos;
 
 	nbru = (unsigned) nbr;
-	i[2] = 0;
-	i[1] = 0;
-	digitos = maalloc(nbr, 16);
+	punts.punt2 = 0;
+	punts.punt1 = 0;
+	digitos = ft_malloc(nbr, 16);
 	while (nbru >= 16)
 	{
-		i[0] = nbru % 16;
+		punts.punt0 = nbru % 16;
 		nbru = nbru / 16;
-		i[2]++;
-		digitos[i[1]++] = base[i[0]];
+		punts.punt2++;
+		digitos[punts.punt1++] = base[punts.punt0];
 	}
 	if (nbru < 16)
 	{
-		i[0] = nbru % 16;
-		digitos[i[1]] = base[i[0]];
-		i[2]++;
+		punts.punt0 = nbru % 16;
+		digitos[punts.punt1] = base[punts.punt0];
+		punts.punt2++;
 	}
-	while (i[1] != -1)
-		write(1, &digitos[i[1]--], 1);
+	while (punts.punt1 != -1)
+		write(1, &digitos[punts.punt1--], 1);
 	free(digitos);
-	return (i[2]);
+	return (punts.punt2);
 }
