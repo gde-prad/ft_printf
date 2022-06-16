@@ -6,13 +6,13 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/09 11:22:56 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:20:35 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned char	*mallocptr(uintptr_t nbu, int r)
+unsigned char	*ft_malloc_ptr(uintptr_t nbu, int r)
 {
 	int				i;
 	unsigned char	*a;
@@ -42,7 +42,7 @@ uintptr_t	ft_putnbr_base_ptr(uintptr_t nbr, char *base)
 	if (nbr == 0)
 		return (zero());
 	i = 0;
-	digitos = mallocptr(nbr, 16);
+	digitos = ft_malloc_ptr(nbr, 16);
 	while (nbr >= 16)
 	{
 		digitos[i] = base[nbr % 16];

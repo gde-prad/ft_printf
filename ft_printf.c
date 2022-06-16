@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:04:10 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/03/09 11:53:52 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:47:28 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	ft_printfnumber(const char format, va_list lst)
 	if (format == 'p')
 		cont += ft_putnbr_base_ptr(va_arg(lst, uintptr_t), "0123456789abcdef");
 	else if (format == 'd' || format == 'i')
-		cont += ft_putnbr_basedec(va_arg(lst, int));
+		cont += ft_putnbr_base(va_arg(lst, int), "0123456789", 10);
 	else if (format == 'u')
 		cont += ft_putnbr_inicial(va_arg(lst, unsigned int));
 	else if (format == 'x')
-		cont += ft_putnbr_base(va_arg(lst, int), "0123456789abcdef");
+		cont += ft_putnbr_base(va_arg(lst, int), "0123456789abcdef", 16);
 	else if (format == 'X')
-		cont += ft_putnbr_base(va_arg(lst, int), "0123456789ABCDEF");
+		cont += ft_putnbr_base(va_arg(lst, int), "0123456789ABCDEF", 16);
 	return (cont);
 }
 

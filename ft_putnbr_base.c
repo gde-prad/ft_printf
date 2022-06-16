@@ -6,7 +6,7 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/06/13 19:03:39 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:26:48 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,35 @@ int	exception(void)
 	return (1);
 }
 
-int	ft_putnbr_base(int nbr, char *base)
+void ft_checksigno(int *nbr, int *ret)
+{
+	if (*nbr < 0)
+	{
+		write(1,"-",1);
+		*ret = 1;
+		*nbr = *nbr * -1;
+	}
+}
+
+int	ft_putnbr_base(int nbr, char *base, int baselenght)
 {
 	struct punteros punts;
-	unsigned int	nbru;
 	unsigned char	*digitos;
 
-	nbru = (unsigned) nbr;
 	punts.punt2 = 0;
 	punts.punt1 = 0;
-	digitos = ft_malloc(nbr, 16);
-	while (nbru >= 16)
+	ft_checksigno(&nbr, &punts.punt2);
+	digitos = ft_malloc(nbr, baselenght);
+	while (nbr >= baselenght)
 	{
-		punts.punt0 = nbru % 16;
-		nbru = nbru / 16;
+		punts.punt0 = nbr % baselenght;
+		nbr = nbr / baselenght;
 		punts.punt2++;
 		digitos[punts.punt1++] = base[punts.punt0];
 	}
-	if (nbru < 16)
+	if (nbr < baselenght)
 	{
-		punts.punt0 = nbru % 16;
+		punts.punt0 = nbr % baselenght;
 		digitos[punts.punt1] = base[punts.punt0];
 		punts.punt2++;
 	}
