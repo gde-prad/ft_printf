@@ -6,7 +6,7 @@
 /*   By: gde-prad <gde-prad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:04:10 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/06/14 18:47:28 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/01 16:33:08 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,23 @@ int	ft_printfchar(const char format, va_list lista)
 
 int	ft_printfnumber(const char format, va_list lst)
 {
-	int	cont;
+	int		cont;
+	char	*hexmayus;
+	char	*hexminus;
 
+	hexmayus = "0123456789ABCDEF";
+	hexminus = "0123456789abcdef";
 	cont = 0;
 	if (format == 'p')
 		cont += ft_putnbr_base_ptr(va_arg(lst, uintptr_t), "0123456789abcdef");
 	else if (format == 'd' || format == 'i')
-		cont += ft_putnbr_base(va_arg(lst, int), "0123456789", 10);
+		cont += ft_putnbr_base((long int)va_arg(lst, int), "0123456789", 10);
 	else if (format == 'u')
 		cont += ft_putnbr_inicial(va_arg(lst, unsigned int));
 	else if (format == 'x')
-		cont += ft_putnbr_base(va_arg(lst, int), "0123456789abcdef", 16);
+		cont += ft_putnbr_base(va_arg(lst, unsigned int), hexminus, 16);
 	else if (format == 'X')
-		cont += ft_putnbr_base(va_arg(lst, int), "0123456789ABCDEF", 16);
+		cont += ft_putnbr_base(va_arg(lst, unsigned int), hexmayus, 16);
 	return (cont);
 }
 

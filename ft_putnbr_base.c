@@ -6,18 +6,16 @@
 /*   By: gde-prad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 11:59:29 by gde-prad          #+#    #+#             */
-/*   Updated: 2022/06/16 18:26:48 by gde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/01 16:22:33 by gde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-struct punteros {
-//Dar nombres descriptivos
-//
-	int	punt0;
-	int	punt1;
-	int	punt2;
+struct	s_punteros {
+	int	tambase;
+	int	tamdig;
+	int	cont;
 };
 
 unsigned char	*ft_malloc(int nbr, int r)
@@ -41,40 +39,42 @@ int	exception(void)
 	return (1);
 }
 
-void ft_checksigno(int *nbr, int *ret)
+void	ft_checksigno(long int *nbr, int *ret, int baselenght)
 {
+	if (baselenght == 16)
+		return ;
 	if (*nbr < 0)
 	{
-		write(1,"-",1);
+		write(1, "-", 1);
 		*ret = 1;
 		*nbr = *nbr * -1;
 	}
 }
 
-int	ft_putnbr_base(int nbr, char *base, int baselenght)
+int	ft_putnbr_base(long int nbr, char *base, int baselenght)
 {
-	struct punteros punts;
-	unsigned char	*digitos;
+	struct s_punteros	punts;
+	unsigned char		*digitos;
 
-	punts.punt2 = 0;
-	punts.punt1 = 0;
-	ft_checksigno(&nbr, &punts.punt2);
+	punts.cont = 0;
+	punts.tamdig = 0;
+	ft_checksigno(&nbr, &punts.cont, baselenght);
 	digitos = ft_malloc(nbr, baselenght);
 	while (nbr >= baselenght)
 	{
-		punts.punt0 = nbr % baselenght;
+		punts.tambase = nbr % baselenght;
 		nbr = nbr / baselenght;
-		punts.punt2++;
-		digitos[punts.punt1++] = base[punts.punt0];
+		punts.cont++;
+		digitos[punts.tamdig++] = base[punts.tambase];
 	}
 	if (nbr < baselenght)
 	{
-		punts.punt0 = nbr % baselenght;
-		digitos[punts.punt1] = base[punts.punt0];
-		punts.punt2++;
+		punts.tambase = nbr % baselenght;
+		digitos[punts.tamdig] = base[punts.tambase];
+		punts.cont++;
 	}
-	while (punts.punt1 != -1)
-		write(1, &digitos[punts.punt1--], 1);
+	while (punts.tamdig != -1)
+		write(1, &digitos[punts.tamdig--], 1);
 	free(digitos);
-	return (punts.punt2);
+	return (punts.cont);
 }
